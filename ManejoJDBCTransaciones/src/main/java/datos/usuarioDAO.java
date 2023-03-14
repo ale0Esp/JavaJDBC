@@ -83,9 +83,9 @@ public class usuarioDAO {
             conn =  this.connectTransaccion != null ? this.connectTransaccion : getConnection();
             System.out.println("ejecutando query: " + SQL_UPDATE);
             stmt = conn.prepareStatement(SQL_UPDATE);
-            stmt.setString(1, usuario.getNombreUsuario());
-            stmt.setString(2, usuario.getPass());
-            stmt.setInt(3, usuario.getIdUsuario());
+            stmt.setObject(1, usuario.getNombreUsuario(),JDBCType.VARCHAR);
+            stmt.setObject(2, usuario.getPass(),JDBCType.VARCHAR);
+            stmt.setObject(3, usuario.getIdUsuario(), JDBCType.INTEGER);
             rows = stmt.executeUpdate();
             System.out.println("Registros actualizado:" + rows);
         } finally {

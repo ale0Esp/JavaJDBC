@@ -16,16 +16,16 @@ public class TestManejoUsuarios {
             if(conexion.getAutoCommit()){
                 conexion.setAutoCommit(false);
                 user = new usuarioDAO(conexion);
-                Usuario cambioUser = new Usuario();
-                cambioUser.setIdUsuario(10);
-                cambioUser.setNombreUsuario("Karla Ivonne");
-                cambioUser.setPass("Gomez");
-                user.update(cambioUser);
+//                Usuario cambioUser = new Usuario();
+//                cambioUser.setIdUsuario(10);
+//                cambioUser.setNombreUsuario("Karla Ivonne");
+//                cambioUser.setPass("Gomez");
+//                user.update(cambioUser);
                 //Usuario newUser = new  Usuario();
-                //newUser.setIdUsuario(15);
-                //newUser.setNombreUsuario("carlos");
-                //newUser.setPass("My_pass");
-                //user.insertar(newUser);
+                newUser.setIdUsuario(15);
+                newUser.setNombreUsuario("carlos");
+                newUser.setPass("My_pass");
+                user.insertar(newUser);
                 conexion.commit();
             }
         } catch (SQLException ex) {

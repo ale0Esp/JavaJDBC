@@ -60,10 +60,10 @@ public class PersonaDAO {
         try {
             conn = this.conexionTransaccional != null ? this.conexionTransaccional : getConnection();
             stmt = conn.prepareStatement(SQL_INSERT);
-            stmt.setString(1, persona.getNombre());
-            stmt.setString(2, persona.getApellido());
-            stmt.setString(3, persona.getEmail());
-            stmt.setString(4, persona.getTelefono());
+            stmt.setObject(1, persona.getNombre(),JDBCType.VARCHAR);
+            stmt.setObject(2, persona.getApellido(),JDBCType.VARCHAR);
+            stmt.setObject(3, persona.getEmail(),JDBCType.VARCHAR);
+            stmt.setObject(4, persona.getTelefono(),JDBCType.VARCHAR);
             registros = stmt.executeUpdate();
        
         } finally {
@@ -87,11 +87,11 @@ public class PersonaDAO {
             conn = this.conexionTransaccional != null ? this.conexionTransaccional : getConnection();
             System.out.println("ejecutando query: " + SQL_UPDATE);
             stmt = conn.prepareStatement(SQL_UPDATE);
-            stmt.setString(1, persona.getNombre());
-            stmt.setString(2, persona.getApellido());
-            stmt.setString(3, persona.getEmail());
-            stmt.setString(4, persona.getTelefono());
-            stmt.setInt(5, persona.getIdPersona());
+            stmt.setObject(1, persona.getNombre(),JDBCType.VARCHAR);
+            stmt.setObject(2, persona.getApellido(),JDBCType.VARCHAR);
+            stmt.setObject(3, persona.getEmail(),JDBCType.VARCHAR);
+            stmt.setObject(4, persona.getTelefono(),JDBCType.VARCHAR);
+            stmt.setObject(5, persona.getIdPersona(),JDBCType.INTEGER);
 
             rows = stmt.executeUpdate();
             System.out.println("Registros actualizado:" + rows);
